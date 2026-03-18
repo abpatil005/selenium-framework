@@ -2,20 +2,25 @@
 
 ## 📌 Overview
 
-This project is a **Selenium-based Test Automation Framework** built using **Java, TestNG, Maven, and Page Object Model (POM)** design pattern.
+This project is a **Test Automation Framework** built using **Selenium WebDriver, Java, TestNG, and Maven**.
 
-It demonstrates how to build a **scalable, maintainable, and reusable automation framework** suitable for real-world web testing.
+It follows the **Page Object Model (POM)** design pattern to ensure:
+
+* Maintainability
+* Reusability
+* Scalability
+
+This framework simulates real-world automation testing practices used in industry.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Language:** Java
-* **Automation Tool:** Selenium WebDriver
-* **Test Framework:** TestNG
-* **Build Tool:** Maven
-* **Design Pattern:** Page Object Model (POM)
-* **Reporting:** Extent Reports
+* **Java**
+* **Selenium WebDriver**
+* **TestNG**
+* **Maven**
+* **Extent Reports**
 
 ---
 
@@ -23,35 +28,33 @@ It demonstrates how to build a **scalable, maintainable, and reusable automation
 
 ```
 selenium-framework
-│── src
-│   ├── main
-│   │   ├── java
-│   │   │   ├── base        # Base classes (WebDriver setup)
-│   │   │   ├── pages       # Page Object classes
-│   │   │   ├── utils       # Utility classes (Waits, Screenshots, Config, Retry)
-│   │
-│   ├── test
-│   │   ├── java
-│   │   │   ├── tests       # Test classes
-│   │   ├── resources
-│   │       ├── config.properties   # Configuration file
+│── src/main/java
+│   ├── base        # Driver setup & teardown
+│   ├── pages       # Page Object classes
+│   ├── utils       # Utility classes (Wait, Screenshot, Config, Retry)
 │
-│── reports                 # Extent Reports
-│── screenshots             # Failure screenshots
-│── pom.xml                 # Maven dependencies
+│── src/test/java
+│   ├── tests       # Test cases
+│
+│── src/test/resources
+│   ├── config.properties   # Config file
+│
+│── reports          # Extent Reports
+│── screenshots      # Failure screenshots
+│── pom.xml          # Maven dependencies
 ```
 
 ---
 
-## ⚙️ Features
+## ⚙️ Framework Features
 
-✔ Page Object Model (POM) implementation
-✔ Config-driven framework (URL, browser, etc.)
-✔ Screenshot capture on test failure
-✔ Extent Report integration for execution results
-✔ Retry mechanism for failed test cases
-✔ Reusable utility methods (Waits, Config, Screenshots)
-✔ Clean and scalable project structure
+✔ Page Object Model (POM) design
+✔ Config-driven execution (browser, URL)
+✔ Explicit wait utilities
+✔ Screenshot capture on failure
+✔ Extent Report integration
+✔ Retry mechanism for flaky tests
+✔ Clean & modular architecture
 
 ---
 
@@ -69,18 +72,19 @@ selenium-framework
 mvn clean test
 ```
 
-### 🔹 From Eclipse
+### 🔹 Using Eclipse
 
-* Right-click on test class → Run As → TestNG Test
+* Right-click on test class
+* Run As → TestNG Test
 
 ---
 
-## 📊 Reporting
+## 📊 Reports
 
-* Extent Report is generated after execution
-* Screenshots are captured automatically for failed tests
+* Extent Report generated after execution
+* Screenshots captured for failed tests
 
-📁 Report location:
+📁 Location:
 
 ```
 /reports/ExtentReport.html
@@ -88,9 +92,9 @@ mvn clean test
 
 ---
 
-## 📸 Sample Report
+## 📸 Sample Execution Report
 
-(Add your screenshot here after uploading)
+(Add your screenshot here)
 
 ```
 screenshots/sample.png
@@ -100,18 +104,18 @@ screenshots/sample.png
 
 ## 🔄 Retry Mechanism
 
-* Failed test cases are automatically retried using a custom Retry Analyzer
-* Helps reduce flaky test failures
+* Automatically retries failed test cases
+* Reduces flaky test failures
 
 ---
 
 ## ⚡ Utilities Included
 
-* WaitUtils (Explicit waits)
-* ScreenshotUtil (Capture screenshots)
-* ConfigReader (Read properties)
-* RetryAnalyzer (Retry failed tests)
-* TestListener (Logging & reporting hooks)
+* WaitUtils → Explicit waits
+* ScreenshotUtil → Capture screenshots
+* ConfigReader → Read config.properties
+* RetryAnalyzer → Retry failed tests
+* TestListener → Logging & reporting
 
 ---
 
@@ -119,8 +123,8 @@ screenshots/sample.png
 
 * Parallel execution (TestNG XML)
 * Cross-browser testing
-* CI/CD integration (Jenkins)
-* Docker integration
+* Jenkins CI/CD integration
+* Docker support
 * API testing integration
 
 ---
