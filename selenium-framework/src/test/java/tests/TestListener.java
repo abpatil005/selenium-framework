@@ -1,11 +1,13 @@
-package utils;
+package tests;
 
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.aventstack.extentreports.*;
 
-import base.BaseTest;
+import tests.BaseTest;
+import utils.ExtentManager;
+import utils.ScreenshotUtil;
 
 public class TestListener implements ITestListener {
 

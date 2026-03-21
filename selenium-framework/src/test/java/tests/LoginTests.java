@@ -5,14 +5,14 @@ import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 
-import base.BaseTest;
+import tests.BaseTest;
 import pages.LoginPage;
 import utils.JsonUtils;
 
 import java.util.List;
 import java.util.Map;
 
-@Listeners(utils.TestListener.class)
+@Listeners(tests.TestListener.class)
 public class LoginTests extends BaseTest {
 
     // 🔥 DataProvider - reads JSON file
