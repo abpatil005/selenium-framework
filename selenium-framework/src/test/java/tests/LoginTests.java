@@ -1,51 +1,54 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 
 import base.BaseTest;
 import pages.LoginPage;
-import utils.WaitUtils;
+import utils.JsonUtils;
+
+import java.util.List;
+import java.util.Map;
 
 @Listeners(utils.TestListener.class)
 public class LoginTests extends BaseTest {
 
-    @Test(retryAnalyzer = utils.RetryAnalyzer.class)
-    public void validLoginTest() {
+    // 🔥 DataProvider - reads JSON file
+    @DataProvider(name = "loginData")
+    public Object[][] getData() {
 
-        LoginPage login = new LoginPage(driver);
+        List<Map<String, String>> data = JsonUtils.getTestData("loginData.json");
 
-        login.enterUsername("standard_user");
-        login.enterPassword("secret_sauce");
-        login.clickLogin();
+        Object[][] obj = new Object[data.size()][1];
 
-        By products = By.xpath("//span[text()='Products']");
+        for (int i = 0; i < data.size(); i++) {
+            obj[i][0] = data.get(i);
+        }
 
-        String text = WaitUtils.waitForElement(driver, products, 10).getText();
-
-        System.out.println("Page title: " + text);
-
-        Assert.assertEquals(text, "Products");
-       
+        return obj;
     }
 
-    @Test(retryAnalyzer = utils.RetryAnalyzer.class)
-    public void invalidLoginTest() {
+    // 🔥 Single Data-Driven Test
+    @Test(dataProvider = "loginData")
+    public void loginTest(Map<String, String> data) {
 
         LoginPage login = new LoginPage(driver);
 
-        login.enterUsername("wrong_user");
-        login.enterPassword("wrong_pass");
-        login.clickLogin();
+        // Perform login using JSON data
+        login.login(data.get("username"), data.get("password"));
 
-        By error = By.xpath("//h3[contains(text(),'Epic sadface')]");
+        // Validate result
+        if (data.get("expected").equals("Products")) {
 
-        String errorMsg = WaitUtils.waitForElement(driver, error, 10).getText();
+            String text = login.getProductsText();
+            Assert.assertEquals(text, "Products");
 
-        System.out.println("Error: " + errorMsg);
+        } else {
 
-        Assert.assertTrue(errorMsg.contains("Epic sadface"));
+            String error = login.getErrorMessage();
+            Assert.assertTrue(error.contains("Epic sadface"));
+        }
     }
 }
