@@ -28,13 +28,15 @@ jobs:
         working-directory: selenium-framework
         run: mvn clean test
 
-      - name: Upload Test Reports
+      # Upload TestNG / Surefire reports (CI artifacts)
+      - name: Upload TestNG Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: TestNG-Reports
-          path: selenium-framework/test-output/
+          path: selenium-framework/target/surefire-reports/
 
+      # Upload Extent reports (CD)
       - name: Upload Extent Reports
         if: always()
         uses: actions/upload-artifact@v4
