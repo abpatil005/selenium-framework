@@ -16,7 +16,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: selenium-framework   # ✅ VERY IMPORTANT
+        working-directory: selenium-framework   # ✅ FIX
 
     steps:
       - name: Checkout code
@@ -28,7 +28,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Verify structure (debug step)
+      - name: Debug folder structure
         run: ls -R
 
       - name: Build with Maven
