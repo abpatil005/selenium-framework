@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 
-import base.BaseTest;
+import tests.BaseTest;
 import pages.LoginPage;
 import utils.JsonUtils;
 
