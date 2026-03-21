@@ -12,7 +12,7 @@ import utils.JsonUtils;
 import java.util.List;
 import java.util.Map;
 
-@Listeners(utils.TestListener.class)
+@Listeners(tests.TestListener.class)
 public class LoginTests extends BaseTest {
 
     // 🔥 DataProvider - reads JSON file
