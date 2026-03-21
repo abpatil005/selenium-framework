@@ -5,7 +5,7 @@ import org.testng.ITestResult;
 
 import com.aventstack.extentreports.*;
 
-import base.BaseTest;
+import tests.BaseTest;
 import utils.ExtentManager;
 import utils.ScreenshotUtil;
 
