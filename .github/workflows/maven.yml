@@ -25,7 +25,9 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
+        working-directory: selenium-framework
         run: mvn clean install
 
       - name: Run Tests
+        working-directory: selenium-framework
         run: mvn test
